@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Notes App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Notes App</h1>
+    <textarea id="note" placeholder="Write your note here..."></textarea>
+    <br>
+    <button onclick="saveNote()">Save Note</button>
+
+    <script>
+        // Function to save the note as a .txt file
+        function saveNote() {
+            const noteText = document.getElementById("note").value;
+            
+            // If there is no text to save, show an alert
+            if (!noteText.trim()) {
+                alert("Please write something in the note.");
+                return;
+            }
+            
+            // Create a Blob with the note content
+            const blob = new Blob([noteText], { type: 'text/plain' });
+            
+            // Create a download link
+            const link = document.createElement('a');
+            const date = new Date().toISOString().replace(/[:.]/g, '-'); // Format the date to avoid file name issues
+            link.download = `note-${date}.txt`; // Set the file name with a timestamp
+            
+            // Create a URL for the Blob and set it as the href of the link
+            link.href = URL.createObjectURL(blob);
+            
+            // Programmatically click the link to trigger the download
+            link.click();
+        }
+    </script>
+
+</body>
+</html>
