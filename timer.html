@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interval Timer for Running</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #timer {
+            font-size: 48px;
+            margin: 20px;
+        }
+        #status {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #controls, #settings {
+            margin: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+        input {
+            padding: 5px;
+            font-size: 16px;
+            width: 60px;
+        }
+        label {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="settings">
+        <label for="workTime">Work (sec):</label>
+        <input type="number" id="workTime" value="60" min="1">
+        <label for="restTime">Rest (sec):</label>
+        <input type="number" id="restTime" value="30" min="1">
+        <label for="rounds">Rounds:</label>
+        <input type="number" id="rounds" value="8" min="1">
+    </div>
+    <div id="status">Ready</div>
+    <div id="timer">00:00</div>
+    <div id="roundsDisplay">Rounds: 0/8</div>
+    <div id="controls">
+        <button onclick="startTimer()">Start</button>
+        <button onclick="pauseTimer()">Pause</button>
+        <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <script>
+        let workTime = 60;
+        let restTime = 30;
+        let totalRounds = 8;
+        let currentRound = 0;
+        let timeLeft = workTime;
+        let isRunning = false;
+        let isWorkPhase = true;
+        let timerInterval = null;
+
+        const timerDisplay = document.getElementById('timer');
+        const statusDisplay = document.getElementById('status');
+        const roundsDisplay = document.getElementById('roundsDisplay');
+        const workInput = document.getElementById('workTime');
+        const restInput = document.getElementById('restTime');
+        const roundsInput = document.getElementById('rounds');
+
+        function updateSettings() {
+            workTime = parseInt(workInput.value) || 60;
+            restTime = parseInt(restInput.value) || 30;
+            totalRounds = parseInt(roundsInput.value) || 8;
+            resetTimer();
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function playSound() {
+            const audio = new Audio('https://www.soundjay.com/buttons/beep-01a.mp3');
+            audio.play().catch(() => console.log('Audio playback failed'));
+        }
+
+        function updateDisplay() {
+            timerDisplay.textContent = formatTime(timeLeft);
+            statusDisplay.textContent = isWorkPhase ? 'Work' : 'Rest';
+            roundsDisplay.textContent = `Rounds: ${currentRound}/${totalRounds}`;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                workTime = parseInt(workInput.value) || 60;
+                restTime = parseInt(restInput.value) || 30;
+                totalRounds = parseInt(roundsInput.value) || 8;
+                timerInterval = setInterval(runTimer, 1000);
+            }
+        }
+
+        function pauseTimer() {
+            if (isRunning) {
+                isRunning = false;
+                clearInterval(timerInterval);
+            }
+        }
+
+        function resetTimer() {
+            pauseTimer();
+            currentRound = 0;
+            timeLeft = workTime;
+            isWorkPhase = true;
+            updateDisplay();
+        }
+
+        function runTimer() {
+            timeLeft--;
+            if (timeLeft < 0) {
+                playSound();
+                if (isWorkPhase) {
+                    isWorkPhase = false;
+                    timeLeft = restTime;
+                } else {
+                    isWorkPhase = true;
+                    currentRound++;
+                    timeLeft = workTime;
+                }
+                if (currentRound >= totalRounds && !isWorkPhase) {
+                    pauseTimer();
+                    statusDisplay.textContent = 'Finished!';
+                    return;
+                }
+            }
+            updateDisplay();
+        }
+
+        workInput.addEventListener('change', updateSettings);
+        restInput.addEventListener('change', updateSettings);
+        roundsInput.addEventListener('change', updateSettings);
+
+        updateDisplay();
+    </script>
+</body>
+</html>
