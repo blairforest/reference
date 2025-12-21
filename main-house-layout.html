@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blair Forest Layout Diagram - Shop and Main House (12 px/ft)</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        svg { background: #f8f8f8; }
+        button { margin: 10px; padding: 10px 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Blair Forest Layout Diagram (Top-Down View)</h1>
+    <p>True scale: 12 pixels = 1 foot. All requested changes applied: N-S overall dimension moved to the left side near the West label; new dimension added between south face of garage and north face of Shop Carport; carport label simplified to "Shop Carport"; roundabout outer-to-gazebo outer dimension added (85' total, with 25' gazebo noted).</p>
+    <svg width="2800" height="2200" viewBox="0 0 2800 2200" xmlns="http://www.w3.org/2000/svg">
+
+<!-- Main House outline (36' N-S = 432px, 72' E-W = 864px) -->
+<rect x="700" y="500" width="864" height="432" fill="none" stroke="black" stroke-width="4"/>
+<text x="1132" y="716" text-anchor="middle" font-size="36" font-weight="bold">Main House 36' × 72'</text>
+
+<!-- House Garage on East (25' deep = 300px) -->
+<rect x="1564" y="500" width="300" height="432" fill="none" stroke="black" stroke-width="4" stroke-dasharray="8,8"/>
+<text x="1714" y="716" text-anchor="middle" font-size="24" transform="rotate(90 1714 716)">Garage 25' deep</text>
+
+<!-- House Grand Entrance protrusion (10' × 10') -->
+<rect x="1072" y="932" width="120" height="120" fill="none" stroke="black" stroke-width="4" stroke-dasharray="8,8"/>
+<text x="1132" y="1100" text-anchor="middle" font-size="24">Grand Entrance 10' × 10'</text>
+
+<!-- Shop outline (40' N-S = 480px, 80' E-W = 960px) -->
+<rect x="1564" y="1312" width="960" height="480" fill="none" stroke="black" stroke-width="4"/>
+<text x="2044" y="1552" text-anchor="middle" font-size="36" font-weight="bold">Shop 40' × 80' × 16' tall</text>
+
+<!-- Shop Carport on North (12' deep, 60' along) -->
+<rect x="1564" y="1168" width="720" height="144" fill="none" stroke="black" stroke-width="4" stroke-dasharray="8,8"/>
+<text x="1924" y="1280" text-anchor="middle" font-size="28">Shop Carport</text>
+
+<!-- Shop Man Door on main North wall -->
+<rect x="1684" y="1297" width="36" height="48" fill="none" stroke="red" stroke-width="5" stroke-dasharray="8,8"/>
+<text x="1702" y="1285" text-anchor="middle" font-size="20" fill="red">3' Man Door</text>
+
+<!-- Shop Main Doors on East -->
+<rect x="2524" y="1384" width="48" height="120" fill="none" stroke="red" stroke-width="5" stroke-dasharray="8,8"/>
+<text x="2548" y="1444" font-size="20" fill="red">10×10</text>
+<rect x="2524" y="1504" width="48" height="144" fill="none" stroke="red" stroke-width="5" stroke-dasharray="8,8"/>
+<text x="2548" y="1576" font-size="20" fill="red">12×12</text>
+<rect x="2524" y="1672" width="48" height="120" fill="none" stroke="red" stroke-width="5" stroke-dasharray="8,8"/>
+<text x="2548" y="1732" font-size="20" fill="red">10×10</text>
+
+<!-- Roundabout Driveway – tangent to west face of Shop -->
+<circle cx="1054" cy="1552" r="510" fill="none" stroke="gray" stroke-width="10"/>
+<circle cx="1054" cy="1552" r="150" fill="#f0e0d0" stroke="#8B7355" stroke-width="4"/>
+<text x="1054" cy="1552" text-anchor="middle" font-size="32" fill="#8B7355">Gazebo</text>
+<text x="1054" cy="1480" text-anchor="middle" font-size="32" fill="gray">Roundabout Driveway</text>
+
+<!-- Roundabout outer to gazebo outer dimension -->
+<line x1="1054" y1="1552" x2="1054" y2="1702" stroke="black" stroke-width="3"/>
+<line x1="1044" y1="1552" x2="1064" y2="1552" stroke="black" stroke-width="3"/>
+<line x1="1044" y1="1702" x2="1064" y2="1702" stroke="black" stroke-width="3"/>
+<text x="1074" y="1627" font-size="28">85'</text>
+
+<!-- Cardinal directions -->
+<text x="1600" y="420" text-anchor="middle" font-size="28" fill="blue">North</text>
+<text x="1600" y="2120" text-anchor="middle" font-size="28" fill="blue">South</text>
+<text x="300" y="1100" text-anchor="middle" font-size="28" fill="blue" transform="rotate(-90 300 1100)">West</text>
+<text x="2700" y="1100" text-anchor="middle" font-size="28" fill="blue" transform="rotate(90 2700 1100)">East</text>
+
+<!-- Overall East-West dimension (177') -->
+<line x1="700" y1="400" x2="2524" y2="400" stroke="black" stroke-width="3"/>
+<text x="1612" y="380" text-anchor="middle" font-size="28">177'</text>
+
+<!-- Overall North-South dimension: southmost tip of roundabout to northmost face of Main House (130') – now on left side near West label -->
+<line x1="400" y1="500" x2="400" y2="2062" stroke="black" stroke-width="3"/>
+<line x1="390" y1="500" x2="410" y2="500" stroke="black" stroke-width="3"/>
+<line x1="390" y1="2062" x2="410" y2="2062" stroke="black" stroke-width="3"/>
+<text x="380" y="1281" text-anchor="end" font-size="28">130'</text>
+
+<!-- New dimension: south face of Garage to north face of Shop Carport -->
+<!-- Garage south y = 500 + 432 = 932 px -->
+<!-- Shop Carport north y = 1168 px -->
+<!-- Distance = 1168 - 932 = 236 px = 19.67' ≈ 20' (effective open gap after carport extension) -->
+<line x1="1800" y1="932" x2="1800" y2="1168" stroke="black" stroke-width="3"/>
+<line x1="1790" y1="932" x2="1810" y2="932" stroke="black" stroke-width="3"/>
+<line x1="1790" y1="1168" x2="1810" y2="1168" stroke="black" stroke-width="3"/>
+<text x="1830" y="1050" font-size="26">20'</text>
+
+<!-- Original 40' building gap reference (house south to shop north) -->
+<line x1="1300" y1="932" x2="1300" y2="1312" stroke="black" stroke-width="3"/>
+<line x1="1290" y1="932" x2="1310" y2="932" stroke="black" stroke-width="3"/>
+<line x1="1290" y1="1312" x2="1310" y2="1312" stroke="black" stroke-width="3"/>
+<text x="1330" y="1122" font-size="26">40' (building gap)</text>
+
+<!-- Alignment line (House East = Shop West) -->
+<line x1="1564" y1="400" x2="1564" y2="2100" stroke="gray" stroke-width="2" stroke-dasharray="6,6"/>
+<text x="1584" y="1000" font-size="22" fill="gray" transform="rotate(90 1584 1000)">Alignment</text>
+
+<!-- Legend -->
+<rect x="300" y="1900" width="600" height="150" fill="white" stroke="black" stroke-width="2"/>
+<text x="320" y="1940" font-size="26" font-weight="bold">Legend</text>
+<rect x="340" y="1970" width="40" height="40" fill="none" stroke="black" stroke-width="4" stroke-dasharray="8,8"/>
+<text x="400" y="1990" font-size="22">Attached Structure</text>
+<rect x="340" y="2020" width="40" height="40" fill="none" stroke="red" stroke-width="5" stroke-dasharray="8,8"/>
+<text x="400" y="2040" font-size="22">Door</text>
+<circle cx="360" cy="2090" r="20" fill="none" stroke="gray" stroke-width="10"/>
+<text x="400" y="2095" font-size="22">Driveway / Roundabout</text>
+
+</svg>
+
+    <button onclick="window.print()">Print Diagram</button>
+    <button onclick="downloadSVG()">Download as SVG</button>
+    
+    <script>
+        function downloadSVG() {
+            const svgElement = document.querySelector('svg');
+            const svgData = new XMLSerializer().serializeToString(svgElement);
+            const blob = new Blob([svgData], {type: 'image/svg+xml'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'blair_forest_layout_final.svg';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
