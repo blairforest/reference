@@ -333,6 +333,17 @@
             color: #666;
         }
 
+
+        /* About / Contact */
+        .about-section { background: var(--white); padding: 5rem 2rem; }
+        .about-inner { max-width: 820px; margin: 0 auto; }
+        .about-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--forest-dark); margin-bottom: 1rem; }
+        .about-inner p { color: #444; margin-bottom: 1rem; }
+        .contact-card { background: var(--mist-gray); border-left: 4px solid var(--solar-gold); padding: 1.25rem 1.5rem; margin-top: 1.5rem; font-style: normal; line-height: 1.8; }
+        .contact-card a { color: var(--forest-green); }
+        footer .footer-links { margin-top: 1rem; font-size: 0.85rem; }
+        footer .footer-links a { color: rgba(255,255,255,0.8); margin: 0 0.6rem; }
+
         /* Footer */
         footer {
             background: var(--charcoal);
@@ -480,10 +491,27 @@
         </div>
     </section>
 
+    <!-- About / Contact -->
+    <section class="about-section" id="about">
+        <div class="about-inner">
+            <h2>About Blair Forest</h2>
+            <p>Blair Forest is the family homestead of Joel Blair and his family on the Cumberland Plateau in Beersheba Springs, Tennessee. We run an off-grid solar property, build our own shop and residence by hand, tap maple trees for syrup, and steward the land.</p>
+            <p>Technology helps us do it. <strong>Lux</strong> is our private family AI assistant, operated by Joel Blair. Lux monitors the solar system, keeps maintenance logs, and sends reminders, schedule and errand updates, and shared family notes by text message and in the Lux app to the owner and to family members who have personally asked to receive them. Lux is not a public or commercial service and does not send marketing messages. See <a href="sms.html">how texting works and how to opt in</a>.</p>
+            <address class="contact-card">
+                <strong>Blair Forest</strong> (Joel Blair, owner)<br>
+                4541 Northcutts Cove Rd, Beersheba Springs, TN 37305<br>
+                Phone: <a href="tel:+19379852844">937-985-2844</a><br>
+                Email: <a href="mailto:lux@blairforest.com">lux@blairforest.com</a><br>
+                Lux text line: 931-616-8833
+            </address>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <p>Blair Forest — A Work in Progress</p>
         <p class="location">Beersheba Springs, Tennessee</p>
+        <p class="footer-links"><a href="#about">About &amp; Contact</a> <a href="sms.html">SMS Opt-in</a> <a href="terms.html">SMS Terms</a> <a href="privacy.html">Privacy Policy</a></p>
         <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.5;">Powered by Sun & Code</p>
     </footer>
 </body>
